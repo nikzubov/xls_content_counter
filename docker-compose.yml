@@ -14,8 +14,8 @@ services:
     image: certbot/certbot
     container_name: certbot
     volumes:
-      - etc-letsencrypt:/etc/letsencrypt
-      - www-html:/var/www/html
+      - test-mission_etc-letsencrypt:/etc/letsencrypt
+      - test-mission_www-html:/var/www/html
     command: certonly --webroot -w /var/www/html --email anakinnikitaa@gmail.com -d denis.anakinnikita.ru --cert-name=denis --key-type rsa --agree-tos
     ports:
       - "6080:80"
@@ -23,9 +23,9 @@ services:
       - test-mission_default
 
 volumes:
-  www-html:
+  test-mission_www-html:
     external: true
-  etc-letsencrypt:
+  test-mission_etc-letsencrypt:
     external: true
 
 networks:
