@@ -10,9 +10,9 @@ services:
     networks:
       - test-mission_default
 
-  certbot:
+  certbot2:
     image: certbot/certbot
-    container_name: certbot
+    container_name: certbot2
     volumes:
       - test-mission_etc-letsencrypt:/etc/letsencrypt
       - test-mission_www-html:/var/www/html
