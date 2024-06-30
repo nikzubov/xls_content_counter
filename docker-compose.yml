@@ -1,0 +1,33 @@
+version: '3.9'
+
+services:
+  xls_app:
+    build: .
+    container_name: xls
+    restart: always
+    ports:
+      - "8080:8080"
+    networks:
+      - test-mission_default
+
+  certbot:
+    image: certbot/certbot
+    container_name: certbot
+    volumes:
+      - etc-letsencrypt:/etc/letsencrypt
+      - www-html:/var/www/html
+    command: certonly --webroot -w /var/www/html --email anakinnikitaa@gmail.com -d denis.anakinnikita.ru --cert-name=denis --key-type rsa --agree-tos
+    ports:
+      - "6080:80"
+    networks:
+      - test-mission_default
+
+volumes:
+  www-html:
+    external: true
+  etc-letsencrypt:
+    external: true
+
+networks:
+  test-mission_default:
+    external: true
